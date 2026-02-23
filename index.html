@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Workforce Transition</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="wrap">
+    <div class="top">
+      <div>
+        <h1>AI Workforce Transition Dashboard</h1>
+        <p class="sub">Filters + KPI view + drill-down details. Data loads from your published Google Sheet CSV.</p>
+      </div>
+      <div class="right">
+        <button id="reset" class="btn primary">Reset</button>
+        <button id="toggleCols" class="btn">Show more columns</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <section>
+      <div id="cards" class="cards"></div>
+
+      <div class="panel">
+        <div class="panelHeader">
+          <h2>Workforce</h2>
+        </div>
+
+        <div class="controls">
+          <input id="search" class="input" placeholder="Search name, role, skills, domain, ID..." />
+          <select id="dept"><option value="">All departments</option></select>
+          <select id="rec"><option value="">All recommendations</option></select>
+          <select id="riskBand">
+            <option value="">All risk bands</option>
+            <option value="low">Low risk (≤2)</option>
+            <option value="mid">Mid risk (=3)</option>
+            <option value="high">High risk (≥4)</option>
+          </select>
+        </div>
+
+        <div class="tableWrap">
+          <table id="tbl">
+            <thead><tr id="theadRow"></tr></thead>
+            <tbody id="tbody"></tbody>
+          </table>
+          <div id="empty" class="empty" style="display:none;">No records match the current filters.</div>
+        </div>
+
+        <div class="note">Keep the table lean. Use the details panel for long text.</div>
+      </div>
+    </section>
+
+    <aside class="panel sticky">
+      <div class="panelHeader">
+        <h2>Employee Details</h2>
+        <button id="clearSel" class="btn">Clear</button>
+      </div>
+      <div id="detail" class="detail">
+        <div class="empty">Click a row to view details.</div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
